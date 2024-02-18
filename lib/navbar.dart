@@ -1,6 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:rx_track/medications/medications.dart';
+import 'package:rx_track/findprescribers.dart';
+import 'package:rx_track/account.dart';
 
 
 class NavBar extends StatefulWidget {
@@ -18,7 +20,7 @@ class _NavBarState extends State<NavBar> {
     'Medication Insights',
     'Medication Reactions',
     'Find Prescribers',
-    'Behavior',
+    'Account Details',
   ];
 
   @override
@@ -57,8 +59,8 @@ class _NavBarState extends State<NavBar> {
             label: 'Find Prescribers',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.insights),
-            label: 'Behavior',
+            icon: Icon(Icons.person),
+            label: 'Account',
           ),
         ],
       ),
@@ -75,9 +77,9 @@ class _NavBarState extends State<NavBar> {
       case 2:
         return const MedicationReactionsPage();
       case 3:
-        return const FindPrescribersPage();
+        return const FindPrescribers();
       case 4:
-        return const BehaviorPage();
+        return const Account();
       default:
         return Container(); // Return an empty container as a fallback
     }
@@ -137,61 +139,6 @@ class MedicationReactionsPage extends StatelessWidget {
     );
   }
 }
-
-class FindPrescribersPage extends StatelessWidget {
-  const FindPrescribersPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _findPrescribersPage(),
-    );
-  }
-
-  Widget _findPrescribersPage() {
-    return const Center(
-      child: Card(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('This is the page to find prescribers'),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class BehaviorPage extends StatelessWidget {
-  const BehaviorPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _behaviorPage(),
-    );
-  }
-
-  Widget _behaviorPage() {
-    return const Center(
-      child: Card(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('This is the page to view behavior'),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class OverviewPage extends StatelessWidget {
   const OverviewPage({super.key});
 
