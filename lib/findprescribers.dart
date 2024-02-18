@@ -66,11 +66,24 @@ class AppointmentForm extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               // Handle form submission
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PushedButton()));
             },
             child: Text('Submit'),
           ),
         ],
       ),
+    );
+  }
+}
+
+class PushedButton extends StatelessWidget {
+  const PushedButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Text("Submitted Form")),
     );
   }
 }
