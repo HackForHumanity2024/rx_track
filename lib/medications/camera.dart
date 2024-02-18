@@ -71,6 +71,7 @@ class _CameraState extends State<Camera> {
                       MaterialPageRoute(
                         builder: (context) => Picture(
                           imagePath: image.path,
+                          camera: widget.camera,
                         ),
                       ),
                     );

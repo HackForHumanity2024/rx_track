@@ -14,7 +14,7 @@ class Medications extends StatefulWidget {
 class _MedicationsState extends State<Medications> {
   Map<String, int> medications = {
     'Adderall 20mg': 3,
-    'Lexapro 10mg': 1,
+    // 'Lexapro 10mg': 1,
   };
   @override
   Widget build(BuildContext context) {
