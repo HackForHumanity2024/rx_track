@@ -4,6 +4,7 @@ import 'package:rx_track/medications/medications.dart';
 import 'package:rx_track/findprescribers.dart';
 import 'package:rx_track/account.dart';
 import 'package:rx_track/notes.dart';
+import 'package:rx_track/medicationinsights.dart';
 
 
 class NavBar extends StatefulWidget {
@@ -74,7 +75,7 @@ class _NavBarState extends State<NavBar> {
       case 0:
         return Medications(camera: widget.camera,);
       case 1:
-        return const MedicationInsightsPage();
+        return const MedicationInsights();
       case 2:
         return const Notes();
       case 3:
@@ -87,86 +88,3 @@ class _NavBarState extends State<NavBar> {
   }
 }
 
-class MedicationInsightsPage extends StatelessWidget {
-  const MedicationInsightsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _medicationInsightsPage(),
-    );
-  }
-
-  Widget _medicationInsightsPage() {
-    return const Center(
-      child: Card(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('This is the page to find medication insights'),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MedicationReactionsPage extends StatelessWidget {
-  const MedicationReactionsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _medicationReactionsPage(),
-    );
-  }
-
-  Widget _medicationReactionsPage() {
-    return const Center(
-      child: Card(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('This is the page to see medication reactions'),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-class OverviewPage extends StatelessWidget {
-  const OverviewPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _buildOverviewPage(),
-    );
-  }
-
-  Widget _buildOverviewPage() {
-    return Column(
-      children: [
-        // left side
-        const Row(
-          children: [
-            // Addrall 20 mg
-            Text("Adderall 20 mg"),
-            // taken today yes or no checkbox
-            
-          ],
-        ),
-        // right side should be a container thing that should how much time to refuel
-        Container(
-          
-        ),
-      ],
-    );
-  }
-}
