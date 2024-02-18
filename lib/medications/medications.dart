@@ -12,49 +12,86 @@ class Medications extends StatefulWidget {
 }
 
 class _MedicationsState extends State<Medications> {
+  Map<String, int> medications = {
+    'Adderall 20mg': 3,
+    'Lexapro 10mg': 1,
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: IconButton(
-          color: Colors.black,
-            icon: const Icon(Icons.camera_alt),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Camera(
-                    camera: widget.camera,
-                  ),
-                ),
-              );
-            }),
-        body: card());
-  }
-
-  Widget card() {
-    Map<String, bool> medications = {
-      'Adderall 20mg': false,
-      'Lexapro 10mg': false,
-    };
-    return ListView(
-      children: medications.entries.map((entry) {
-        String medName = entry.key;
-        bool isTaken = entry.value;
-        return Card(
-          child: ListTile(
-            title: Text(medName),
-            subtitle: Text('Next Refill: 3 weeks'),
-            trailing: Checkbox(
-              value: isTaken,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  medications[medName] = newValue!;
-                });
-              },
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Camera(
+                camera: widget.camera,
+              ),
             ),
+          );
+        },
+        child: Icon(Icons.camera_alt),
+      ),
+      body: ListView(
+        children: medications.entries
+            .map((entry) => MedicationCard(
+                  medName: entry.key,
+                  doseCap: entry.value,
+                ))
+            .toList(),
+      ),
+    );
+  }
+}
+
+class MedicationCard extends StatefulWidget {
+  final String medName;
+  final int doseCap;
+
+  const MedicationCard({
+    Key? key,
+    required this.medName,
+    required this.doseCap,
+  }) : super(key: key);
+
+  @override
+  _MedicationCardState createState() => _MedicationCardState();
+}
+
+class _MedicationCardState extends State<MedicationCard> {
+  int counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        title: Text(
+          widget.medName,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20.0,
           ),
-        );
-      }).toList(),
+        ),
+        subtitle: Row(
+          children: [
+            Text('Taken $counter/${widget.doseCap} times.'),
+            if (counter < widget.doseCap)
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    counter++;
+                  });
+                },
+                child: Text('Took Dose'),
+              ),
+          ],
+        ),
+        trailing: Column(
+          children: [
+            Text('Next Refill:\n3 weeks'),
+          ],
+        ),
+      ),
     );
   }
 }
