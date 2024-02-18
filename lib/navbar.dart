@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rx_track/medications/medications.dart';
 import 'package:rx_track/findprescribers.dart';
 import 'package:rx_track/account.dart';
+import 'package:rx_track/notes.dart';
 
 
 class NavBar extends StatefulWidget {
@@ -18,7 +19,7 @@ class _NavBarState extends State<NavBar> {
   final List<String> _pageTitles = [
     'Medications',
     'Medication Insights',
-    'Medication Reactions',
+    'Feedback and Notes',
     'Find Prescribers',
     'Account Details',
   ];
@@ -52,7 +53,7 @@ class _NavBarState extends State<NavBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.warning),
-            label: 'Reactions',
+            label: 'Notes',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
@@ -75,7 +76,7 @@ class _NavBarState extends State<NavBar> {
       case 1:
         return const MedicationInsightsPage();
       case 2:
-        return const MedicationReactionsPage();
+        return const Notes();
       case 3:
         return const FindPrescribers();
       case 4:

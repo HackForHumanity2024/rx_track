@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-class Account extends StatelessWidget {
-  const Account({super.key});
+class Notes extends StatelessWidget {
+  const Notes({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +21,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Symptoms, Concerns, Questions..."),
+      ),
       body: const AccountInformationForm(),
     );
   }
@@ -41,26 +44,23 @@ class _AccountInformationFormState extends State<AccountInformationForm> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Insurance Provider',
-              border: OutlineInputBorder(),
+          Container(
+            height: 300,
+            child: const TextField(
+              minLines: 100,
+              maxLines: null, // Allow unlimited number of lines
+              textAlignVertical: TextAlignVertical.top, // Align text to the top
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+              ),
             ),
-          ),
-          SizedBox(height: 10),
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Zip Code',
-              border: OutlineInputBorder(),
-            ),
-            keyboardType: TextInputType.number,
           ),
           SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
               // Handle form submission
             },
-            child: Text('Save'),
+            child: const Text('Submit to Doctor'),
           ),
         ],
       ),
